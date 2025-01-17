@@ -53,8 +53,10 @@
           {{ contact.companyAddress }}
         </td>
         <td>
-          <a class="btn btn-success me-3" [routerLink]="['/contact', contact.id]">Redaguoti</a>
-          <button class="btn btn-danger" (click)="deleteContact(contact.id)">Ištrinti</button>
+          <button class="btn me-3" *ngIf="!idToken" disabled>Redaguoti</button>
+          <a class="btn btn-success me-3" *ngIf="idToken" [routerLink]="['/contact', contact.id]">Redaguoti</a>
+          <button class="btn" *ngIf="!idToken" disabled>Ištrinti</button>
+          <button class="btn btn-danger" *ngIf="idToken" (click)="deleteContact(contact.id)">Ištrinti</button>
         </td>
 
       </tr>

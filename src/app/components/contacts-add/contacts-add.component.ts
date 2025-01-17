@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
   styleUrl: './contacts-add.component.css'
 })
 export class ContactsAddComponent {
+  public idToken:string = "";
   public firstName:string|null = "";
   public surname:string|null = "";
   public phone:string|null = "";
@@ -21,6 +22,10 @@ export class ContactsAddComponent {
   public companyAddress:string|null = "";
 
   constructor(private contactService:ContactInfoService, private router:Router) {
+    let tmp = localStorage.getItem('token');
+    if (tmp != null) {
+      this.idToken = tmp;
+    }
   }
 
   public newContact(f:NgForm) {

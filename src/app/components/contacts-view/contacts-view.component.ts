@@ -12,6 +12,7 @@ import {RouterLink} from '@angular/router';
 })
 export class ContactsViewComponent {
   public contacts:Contact[] = [];
+  public idToken:string = "";
 
   private loadData(){
     this.contactService.loadContacts().subscribe({
@@ -23,6 +24,10 @@ export class ContactsViewComponent {
 
   public constructor(private contactService:ContactInfoService) {
     this.loadData();
+    let tmp = localStorage.getItem('token');
+    if (tmp != null) {
+      this.idToken = tmp;
+    }
   }
 
   public deleteContact(id:string|null){

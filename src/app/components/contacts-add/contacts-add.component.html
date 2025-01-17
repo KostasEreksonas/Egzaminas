@@ -107,7 +107,8 @@
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
-                    <button type="submit" class="btn bsb-btn-xl btn-primary">Pridėti</button>
+                    <button type="submit" class="btn bsb-btn-xl" *ngIf="!idToken" disabled>Pridėti</button>
+                    <button type="submit" class="btn bsb-btn-xl btn-primary" *ngIf="idToken">Pridėti</button>
                   </div>
                 </div>
               </div>
