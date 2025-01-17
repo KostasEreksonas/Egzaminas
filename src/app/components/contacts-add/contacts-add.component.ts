@@ -21,7 +21,7 @@ export class ContactsAddComponent {
   public companyName:string|null = "";
   public companyAddress:string|null = "";
 
-  constructor(private contactService:ContactInfoService, private router:Router) {
+  public constructor(private contactService:ContactInfoService, private router:Router) {
     let tmp = localStorage.getItem('token');
     if (tmp != null) {
       this.idToken = tmp;

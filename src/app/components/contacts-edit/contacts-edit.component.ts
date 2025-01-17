@@ -20,7 +20,7 @@ export class ContactsEditComponent {
   public companyName:string|null = "";
   public companyAddress:string|null = "";
 
-  constructor(private route:ActivatedRoute, private router:Router, private contactService:ContactInfoService) {
+  public constructor(private route:ActivatedRoute, private router:Router, private contactService:ContactInfoService) {
     this.id = this.route.snapshot.params["id"];
     this.contactService.loadContact(this.id).subscribe((contact)=>{
       this.firstName = contact.firstName;
