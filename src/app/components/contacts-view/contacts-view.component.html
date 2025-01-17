@@ -1,0 +1,68 @@
+<div class="card mt-5">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>
+          Vardas
+        </th>
+        <th>
+          Pavardė
+        </th>
+        <th>
+          Telefono numeris
+        </th>
+        <th>
+          El. Paštas
+        </th>
+        <th>
+          Komentarai
+        </th>
+        <th>
+          Darbovietė
+        </th>
+        <th>
+          Darbovietės adresas
+        </th>
+        <th style="width: 250px;">
+          Veiksmai
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let contact of contacts; let i=index">
+        <td>
+          {{ contact.firstName }}
+        </td>
+        <td>
+          {{ contact.surname }}
+        </td>
+        <td>
+          {{ contact.phone }}
+        </td>
+        <td>
+          {{ contact.email }}
+        </td>
+        <td>
+          {{ contact.comment }}
+        </td>
+        <td>
+          {{ contact.companyName }}
+        </td>
+        <td>
+          {{ contact.companyAddress }}
+        </td>
+        <td>
+          <a class="btn btn-success me-3" [routerLink]="['/contact', contact.id]">Redaguoti</a>
+          <button class="btn btn-danger" (click)="deleteContact(contact.id)">Ištrinti</button>
+        </td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+
+</div>
