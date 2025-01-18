@@ -26,7 +26,6 @@ export class ContactsViewComponent {
   }
 
   public filterData() {
-    console.log(this.filterValue, this.filter);
     this.contactService.loadContacts().subscribe({
       next:(data)=>{
         if (this.filter === "firstName") {
@@ -35,7 +34,11 @@ export class ContactsViewComponent {
           this.contacts = data.filter(x => x.surname === this.filterValue);
         } else if (this.filter === "companyName") {
           this.contacts = data.filter(x => x.companyName === this.filterValue);
+        } else if (this.filter === "") {
+          this.contacts = data;
         }
+        this.filter = "";
+        this.filterValue = "";
       }
     })
   }

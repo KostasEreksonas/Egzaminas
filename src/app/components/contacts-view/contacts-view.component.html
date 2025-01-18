@@ -1,20 +1,5 @@
 <div class="card mt-5">
   <div class="card-body">
-    <div class="col-12">
-      <div class="mb-3">
-        <label for="filterval" class="form-label p-2">Paieška</label>
-        <input type="text" name="filterval" id="filterval" class="form-control" [(ngModel)]="filterValue"><br>
-      </div>
-    </div>
-    <label for="bench_type" class="form-label p-2">Filtras</label>
-    <select name="bench_type" id="bench_type" class="form-control" [(ngModel)]="filter" required>
-      <option value="firstName">Vardas</option>
-      <option value="surname">Pavardė</option>
-      <option value="companyName">Įmonės pavadinimas</option>
-    </select>
-    <button type="submit" class="btn bsb-btn-xl btn-primary mt-3" (click)="filterData()">Filtruoti</button>
-  </div>
-  <div class="card-body">
     <table class="table">
       <thead>
       <tr>
@@ -73,13 +58,25 @@
           <button class="btn" *ngIf="!idToken" disabled>Ištrinti</button>
           <button class="btn btn-danger" *ngIf="idToken" (click)="deleteContact(contact.id)">Ištrinti</button>
         </td>
-
       </tr>
       </tbody>
-
     </table>
-
-
   </div>
-
+  <div class="card-body">
+    <h1 class="text-center">Klientų paieška</h1>
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="filterval" class="form-label p-2">Paieška</label>
+        <input type="text" name="filterval" id="filterval" class="form-control" [(ngModel)]="filterValue"><br>
+      </div>
+    </div>
+    <label for="bench_type" class="form-label p-2">Filtras</label>
+    <select name="bench_type" id="bench_type" class="form-control" [(ngModel)]="filter" required>
+      <option value="firstName">Vardas</option>
+      <option value="surname">Pavardė</option>
+      <option value="companyName">Įmonės pavadinimas</option>
+    </select>
+    <button type="submit" class="btn bsb-btn-xl btn-primary mt-3 me-3" (click)="filterData()">Filtruoti</button>
+    <button type="submit" class="btn bsb-btn-xl btn-primary mt-3" (click)="filterData()">Rodyti visus</button>
+  </div>
 </div>
