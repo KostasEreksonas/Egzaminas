@@ -30,20 +30,38 @@ export class ContactsAddComponent {
   }
 
   public newContact(f:NgForm) {
-    const tmp:Contact={
-      firstName:f.form.value.firstName,
-      surname:f.form.value.surname,
-      phone:f.form.value.phone,
-      email:f.form.value.email,
-      comment:f.form.value.comment,
-      status:f.form.value.status,
-      companyName:f.form.value.companyName,
-      companyAddress:f.form.value.companyAddress,
-      id:null
-    };
+    if (f.form.value.status === "nedirbantis") {
+      const tmp:Contact={
+        firstName:f.form.value.firstName,
+        surname:f.form.value.surname,
+        phone:f.form.value.phone,
+        email:f.form.value.email,
+        comment:f.form.value.comment,
+        status:f.form.value.status,
+        companyName:f.form.value.status,
+        companyAddress:f.form.value.status,
+        id:null
+      };
 
-    this.contactService.addContact(tmp).subscribe(()=>{
-      this.router.navigate(['info']);
-    });
+      this.contactService.addContact(tmp).subscribe(()=>{
+        this.router.navigate(['info']);
+      });
+    } else if (f.form.value.status === "dirbantis") {
+      const tmp:Contact={
+        firstName:f.form.value.firstName,
+        surname:f.form.value.surname,
+        phone:f.form.value.phone,
+        email:f.form.value.email,
+        comment:f.form.value.comment,
+        status:f.form.value.status,
+        companyName:f.form.value.companyName,
+        companyAddress:f.form.value.companyAddress,
+        id:null
+      };
+
+      this.contactService.addContact(tmp).subscribe(()=>{
+        this.router.navigate(['info']);
+      });
+    }
   }
 }

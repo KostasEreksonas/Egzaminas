@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ContactInfoService} from '../../services/contact-info.service';
 import {CommonModule} from '@angular/common';
 import {FormsModule, NgForm} from '@angular/forms';
+import {Contact} from '../../models/contact';
 
 @Component({
   selector: 'app-contacts-edit',
@@ -36,20 +37,38 @@ export class ContactsEditComponent {
   }
 
   public updateContact(f:NgForm) {
-    this.contactService.updateContact({
-      id:this.id,
-      firstName:f.form.value.firstName,
-      surname:f.form.value.surname,
-      phone:f.form.value.phone,
-      email:f.form.value.email,
-      comment:f.form.value.comment,
-      status:f.form.value.status,
-      companyName:f.form.value.companyName,
-      companyAddress:f.form.value.companyAddress
-    }).subscribe({
-      next:()=>{
-        this.router.navigate(['info']);
-      }
-    })
+    if (f.form.value.status === "nedirbantis") {
+      this.contactService.updateContact({
+        id:this.id,
+        firstName:f.form.value.firstName,
+        surname:f.form.value.surname,
+        phone:f.form.value.phone,
+        email:f.form.value.email,
+        comment:f.form.value.comment,
+        status:f.form.value.status,
+        companyName:f.form.value.status,
+        companyAddress:f.form.value.status
+      }).subscribe({
+        next:()=>{
+          this.router.navigate(['info']);
+        }
+      })
+    } else if (f.form.value.status === "dirbantis") {
+      this.contactService.updateContact({
+        id:this.id,
+        firstName:f.form.value.firstName,
+        surname:f.form.value.surname,
+        phone:f.form.value.phone,
+        email:f.form.value.email,
+        comment:f.form.value.comment,
+        status:f.form.value.status,
+        companyName:f.form.value.companyName,
+        companyAddress:f.form.value.companyAddress
+      }).subscribe({
+        next:()=>{
+          this.router.navigate(['info']);
+        }
+      })
+    }
   }
 }
