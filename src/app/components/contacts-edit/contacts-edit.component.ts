@@ -17,6 +17,7 @@ export class ContactsEditComponent {
   public phone:string|null = "";
   public email:string|null = "";
   public comment:string|null = "";
+  public status:string|null = "";
   public companyName:string|null = "";
   public companyAddress:string|null = "";
 
@@ -28,6 +29,7 @@ export class ContactsEditComponent {
       this.phone = contact.phone;
       this.email = contact.email;
       this.comment = contact.comment;
+      this.status = contact.status;
       this.companyName = contact.companyName;
       this.companyAddress = contact.companyAddress;
     })
@@ -41,6 +43,7 @@ export class ContactsEditComponent {
       phone:f.form.value.phone,
       email:f.form.value.email,
       comment:f.form.value.comment,
+      status:f.form.value.status,
       companyName:f.form.value.companyName,
       companyAddress:f.form.value.companyAddress
     }).subscribe({

@@ -79,6 +79,15 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
+                    <select class="form-control" [(ngModel)]="status" name="status" id="status" aria-label="Floating label select example" required>
+                      <option value="dirbantis">Dirbantis</option>
+                      <option value="nedirbantis">Nedirbantis</option>
+                    </select>
+                    <label for="status" class="form-label">Statusas</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
                     <input
                       type="text"
                       class="form-control"
