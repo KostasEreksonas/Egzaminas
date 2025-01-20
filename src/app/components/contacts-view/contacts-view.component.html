@@ -1,5 +1,10 @@
 <div class="card mt-5">
   <app-loading *ngIf="isLoading"></app-loading>
+  <div class="alert alert-danger" *ngIf="isError">
+    Įvyko klaida
+  </div>
+  <div *ngIf="!isError && !isLoading">
+  </div>
   <div class="d-lg-none" *ngFor="let contact of contacts; let i=index">
     <div class="container mb-3">
       <div class="text-center">

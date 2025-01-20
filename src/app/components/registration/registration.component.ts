@@ -13,6 +13,9 @@ import {FormsModule, NgForm} from '@angular/forms';
 export class RegistrationComponent {
   public email:string|null = null;
   public password:string|null = null;
+  public code:number|null = null;
+  public message:string = "";
+  public isError:boolean = false;
 
   public constructor(private auth:AuthService, private router:Router) {
   }
@@ -20,6 +23,10 @@ export class RegistrationComponent {
   public register(f:NgForm) {
     this.auth.register(f.form.value.email, f.form.value.password).subscribe((data)=>{
       this.router.navigate(['login']);
-    })
+    }, (data)=>{
+      this.isError = true;
+      this.code = data.error.error.code;
+      this.message = data.error.error.message;
+    });
   }
 }

@@ -18,6 +18,9 @@ import {CommonModule} from '@angular/common';
 export class LoginComponent {
   public email:string|null = null;
   public password:string|null = null;
+  public code:number|null = null;
+  public message:string = "";
+  public isError:boolean = false;
 
   public constructor(private auth:AuthService, private router:Router) {
 
@@ -28,6 +31,10 @@ export class LoginComponent {
       this.router.navigate(['info']).then(()=>{
         window.location.reload();
       });
-    })
+    }, (data)=>{
+      this.isError = true;
+      this.code = data.error.error.code;
+      this.message = data.error.error.message;
+    });
   }
 }

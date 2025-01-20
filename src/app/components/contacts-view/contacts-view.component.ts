@@ -20,7 +20,8 @@ import {LoadingComponent} from '../loading/loading.component';
 export class ContactsViewComponent {
   public contacts:Contact[] = [];
   public idToken:string = "";
-  public isLoading = false;
+  public isLoading:boolean = false;
+  public isError:boolean = false;
   public filterValue:string = "";
   public filter:string = "";
 
