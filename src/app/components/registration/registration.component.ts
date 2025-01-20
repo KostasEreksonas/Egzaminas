@@ -21,12 +21,15 @@ export class RegistrationComponent {
   }
 
   public register(f:NgForm) {
-    this.auth.register(f.form.value.email, f.form.value.password).subscribe(()=>{
-      this.router.navigate(['login']);
-    }, (data)=>{
-      this.isError = true;
-      this.code = data.error.error.code;
-      this.message = data.error.error.message;
+    this.auth.register(f.form.value.email, f.form.value.password).subscribe({
+      next:()=>{
+        this.router.navigate(['login']);
+      },
+      error:(data)=>{
+        this.isError = true;
+        this.code = data.error.error.code;
+        this.message = data.error.error.message;
+      }
     });
   }
 }
