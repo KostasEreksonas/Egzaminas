@@ -22,6 +22,8 @@ export class ContactsViewComponent {
   public idToken:string = "";
   public isLoading:boolean = false;
   public isError:boolean = false;
+  public status:string = "";
+  public message:string = "";
   public filterValue:string = "";
   public filter:string = "";
 
@@ -31,6 +33,13 @@ export class ContactsViewComponent {
       next:(data)=>{
         this.contacts = data.sort((a,b) => a.surname > b.surname ? 1 : -1);
         this.isLoading = false;
+        this.isError = false;
+      },
+      error:(data)=>{
+        this.isError = true;
+        this.isLoading = false;
+        this.status = data.status;
+        this.message = data.error.error;
       }
     })
   }
