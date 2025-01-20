@@ -1,6 +1,6 @@
 <div class="card mt-5">
   <app-loading *ngIf="isLoading"></app-loading>
-  <div class="alert alert-danger" *ngIf="isError">
+  <div class="alert alert-danger" *ngIf="isError && !isLoading">
     Klaidos kodas: {{ status }} <br>
     Klaidos pranešimas: {{ message }}
   </div>

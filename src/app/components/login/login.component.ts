@@ -27,14 +27,17 @@ export class LoginComponent {
   }
 
   public login(f:NgForm){
-    this.auth.login(f.form.value.email, f.form.value.password).subscribe(()=>{
-      this.router.navigate(['info']).then(()=>{
-        window.location.reload();
-      });
-    }, (data)=>{
-      this.isError = true;
-      this.code = data.error.error.code;
-      this.message = data.error.error.message;
+    this.auth.login(f.form.value.email, f.form.value.password).subscribe({
+      next:()=>{
+        this.router.navigate(['info']).then(()=>{
+          window.location.reload();
+        });
+      },
+      error:(data)=>{
+        this.isError = true;
+        this.code = data.error.error.code;
+        this.message = data.error.error.message;
+      }
     });
   }
 }
