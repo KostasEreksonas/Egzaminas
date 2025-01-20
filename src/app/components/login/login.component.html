@@ -19,12 +19,15 @@
                       type="email"
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       class="form-control"
+                      [class.is-invalid]="inputEmail.errors"
                       name="email"
                       id="email"
                       placeholder="vardas@pastas.com"
                       [(ngModel)]="email"
                       required
+                      #inputEmail="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputEmail.errors && inputEmail.touched">Neteisingas el. pašto adreso formatas</div>
                     <label for="email" class="form-label">El. paštas</label>
                   </div>
                 </div>
@@ -33,6 +36,7 @@
                     <input
                       type="password"
                       class="form-control"
+                      [class.is-invalid]="!inputPassword.valid && inputPassword.touched"
                       name="password"
                       id="password"
                       value=""
@@ -40,7 +44,9 @@
                       [(ngModel)]="password"
                       required
                       minlength="6"
+                      #inputPassword="ngModel"
                     >
+                    <div class="helper-block" *ngIf="!inputPassword.valid && inputPassword.touched">Mažiausiai 6 simboliai</div>
                     <label for="password" class="form-label">Slaptažodis</label>
                   </div>
                 </div>

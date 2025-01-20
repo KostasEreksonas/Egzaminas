@@ -12,12 +12,17 @@
                     <input
                       type="text"
                       class="form-control"
+                      [class.is-invalid]="!inputName.valid && inputName.touched"
                       [(ngModel)]="firstName"
                       name="firstName"
                       id="firstName"
                       placeholder=""
                       required
+                      minlength="5"
+                      maxlength="64"
+                      #inputName="ngModel"
                     >
+                    <div class="helper-block" *ngIf="!inputName.valid && inputName.touched">"Nuo 5 iki 64 simbolių"</div>
                     <label for="firstName" class="form-label">Vardas</label>
                   </div>
                 </div>
@@ -26,12 +31,17 @@
                     <input
                       type="text"
                       class="form-control"
+                      [class.is-invalid]="!inputSurname.valid && inputSurname.touched"
                       [(ngModel)]="surname"
                       name="surname"
                       id="surname"
                       placeholder=""
                       required
+                      minlength="5"
+                      maxlength="64"
+                      #inputSurname="ngModel"
                     >
+                    <div class="helper-block" *ngIf="!inputSurname.valid && inputSurname.touched">"Nuo 5 iki 64 simbolių"</div>
                     <label for="surname" class="form-label">Pavardė</label>
                   </div>
                 </div>
@@ -39,13 +49,17 @@
                   <div class="form-floating mb-3">
                     <input
                       type="text"
+                      pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
                       class="form-control"
+                      [class.is-invalid]="inputPhone.errors && inputPhone.touched"
                       [(ngModel)]="phone"
                       name="phone"
                       id="phone"
                       placeholder=""
                       required
+                      #inputPhone="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputPhone.errors && inputPhone.touched">Neteisingas telefono numerio formatas</div>
                     <label for="phone" class="form-label">Tel. Nr.</label>
                   </div>
                 </div>
@@ -53,13 +67,17 @@
                   <div class="form-floating mb-3">
                     <input
                       type="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       class="form-control"
+                      [class.is-invalid]="inputEmail.errors && inputEmail.touched"
                       [(ngModel)]="email"
                       name="email"
                       id="email"
                       placeholder=""
                       required
+                      #inputEmail="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputEmail.errors && inputEmail.touched">Neteisingas el. pašto adreso formatas</div>
                     <label for="email" class="form-label">El. Paštas</label>
                   </div>
                 </div>
@@ -68,12 +86,17 @@
                     <input
                       type="text"
                       class="form-control"
+                      [class.is-invalid]="!inputComment.valid && inputComment.touched"
                       [(ngModel)]="comment"
                       name="comment"
                       id="comment"
                       placeholder=""
                       required
+                      minlength="8"
+                      maxlength="256"
+                      #inputComment="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputComment.errors && inputComment.touched">Nuo 8 iki 256 simbolių</div>
                     <label for="comment" class="form-label">Komentaras</label>
                   </div>
                 </div>
@@ -91,12 +114,17 @@
                     <input
                       type="text"
                       class="form-control"
+                      [class.is-invalid]="!inputCompanyName.valid && inputCompanyName.touched"
                       [(ngModel)]="companyName"
                       name="companyName"
                       id="companyName"
                       placeholder=""
                       required
+                      minlength="8"
+                      maxlength="64"
+                      #inputCompanyName="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputCompanyName.errors && inputCompanyName.touched">Nuo 8 iki 64 simbolių</div>
                     <label for="companyName" class="form-label">Įmonės pavadinimas</label>
                   </div>
                 </div>
@@ -105,12 +133,17 @@
                     <input
                       type="text"
                       class="form-control"
+                      [class.is-invalid]="!inputCompanyAddress.valid && inputCompanyAddress.touched"
                       [(ngModel)]="companyAddress"
                       name="companyAddress"
                       id="companyAddress"
                       placeholder=""
                       required
+                      minlength="8"
+                      maxlength="32"
+                      #inputCompanyAddress="ngModel"
                     >
+                    <div class="helper-block" *ngIf="inputCompanyAddress.errors && inputCompanyAddress.touched">Nuo 8 iki 32 simbolių</div>
                     <label for="companyAddress" class="form-label">Įmonės adresas</label>
                   </div>
                 </div>
