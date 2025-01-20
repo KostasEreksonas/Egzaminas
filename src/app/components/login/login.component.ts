@@ -27,7 +27,7 @@ export class LoginComponent {
   }
 
   public login(f:NgForm){
-    this.auth.login(f.form.value.email, f.form.value.password).subscribe((data)=>{
+    this.auth.login(f.form.value.email, f.form.value.password).subscribe(()=>{
       this.router.navigate(['info']).then(()=>{
         window.location.reload();
       });
